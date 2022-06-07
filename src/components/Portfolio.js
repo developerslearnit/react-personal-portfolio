@@ -5,7 +5,7 @@ import Modal from "./Modal";
 
 const Portfolio = () => {
   const [portfolioData, setPortfolioData] = useState([]);
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   const [single, setSingle] = useState({});
 
