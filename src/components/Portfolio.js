@@ -63,7 +63,7 @@ const Portfolio = () => {
         <Modal
           showModal={showModal}
           handleClose={handleClose}
-          image={urlFor(single.image)}
+          image={single?.image && urlFor(single.image)}
           category={single.category}
           description={single.description}
           title={single.title}
