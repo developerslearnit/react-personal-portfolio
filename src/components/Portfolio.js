@@ -1,9 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { client, urlFor } from "../lib/sanityClient";
 import * as Unicons from "@iconscout/react-unicons";
+import Modal from "./Modal";
 
 const Portfolio = () => {
   const [portfolioData, setPortfolioData] = useState([]);
+  const [showModal, setShowModal] = useState(true);
+
+  const [single, setSingle] = useState({});
+
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
+  const handleShowModal = (item) => {
+    setSingle(item);
+    setShowModal(true);
+  };
 
   useEffect(() => {
     const loadPortfolioData = async () => {
@@ -37,12 +50,26 @@ const Portfolio = () => {
           <div key={index} className="work__card mix app">
             <img src={urlFor(item.image)} alt="work-1" className="work__img" />
             <h3 className="work__title">{item.category}</h3>
-            <span className="work__button">
+            <span
+              className="work__button"
+              onClick={() => handleShowModal(item)}
+            >
               Demo
               <Unicons.UilArrowRight size={20} className="work__button-icon" />
             </span>
           </div>
         ))}
+
+        <Modal
+          showModal={showModal}
+          handleClose={handleClose}
+          image={urlFor(single.image)}
+          category={single.category}
+          description={single.description}
+          title={single.title}
+          technologies={single.technologies}
+          url={single.url}
+        />
       </div>
     </>
   );

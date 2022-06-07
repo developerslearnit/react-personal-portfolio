@@ -703,8 +703,7 @@ input {
   align-items: center;
   padding: 0 1rem;
   z-index: var(--z-modal);
-  opacity: 0;
-  visibility: hidden;
+
   transition: 0.6s;
 }
 
@@ -728,8 +727,8 @@ input {
 
 .portfolio__popup-close {
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 0.8rem;
+  right: 0.8rem;
   font-size: 1.5rem;
   cursor: pointer;
   color: var(--skin-color);

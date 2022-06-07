@@ -1,14 +1,6 @@
 import React from "react";
 import * as Unicons from "@iconscout/react-unicons";
-import {
-  Link,
-  Button,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller,
-} from "react-scroll";
+import { Link, animateScroll as scroll } from "react-scroll";
 const Sidebar = () => {
   const handleToggleMobileMenu = () => {
     document.getElementById("sidebar").classList.add("show-sidebar");
