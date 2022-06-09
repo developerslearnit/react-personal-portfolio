@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { client, urlFor } from "../lib/sanityClient";
+import React from "react";
+import { urlFor } from "../lib/sanityClient";
 import * as Unicons from "@iconscout/react-unicons";
 
 import { useAppContext } from "../context/AppContext";
