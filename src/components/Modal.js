@@ -37,12 +37,15 @@ const Modal = ({
                       Tech Stack - <span>{technologies}</span>
                     </li>
                     <li>
-                      View -{" "}
-                      <span>
-                        <a rel="noreferer" target="_blank" href={url}>
-                          {url}
-                        </a>{" "}
-                      </span>
+                      <a
+                        rel="noreferer"
+                        className="button"
+                        target="_blank"
+                        href={url}
+                      >
+                        <Unicons.UilGlobe size={20} />
+                        View Project
+                      </a>
                     </li>
                   </ul>
                 </div>

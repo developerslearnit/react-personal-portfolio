@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { client, urlFor } from "../lib/sanityClient";
+import { urlFor } from "../lib/sanityClient";
 import * as Unicons from "@iconscout/react-unicons";
+import { useAppContext } from "../context/AppContext";
 
 const About = () => {
-  const [aboutData, setAboutData] = useState(null);
+  const { aboutData, clickMe } = useAppContext();
 
-  useEffect(() => {
-    const loadAboutData = async () => {
-      const about = await client.fetch(`*[_type == "about"]`);
-      setAboutData(about[0]);
-    };
-    loadAboutData();
-  }, []);
+  console.log("aboutData", aboutData);
+
   return (
     <div className="about__container container grid">
       {aboutData?.aboutImage && (
@@ -54,7 +49,7 @@ const About = () => {
             </span>
           </div>
         </div>
-        <a href="#contact" className="button">
+        <a href="#contact" className="button" onClick={clickMe}>
           <Unicons.UilNavigator className="button__icon" />
           Contact Me
         </a>

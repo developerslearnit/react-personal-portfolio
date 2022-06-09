@@ -1,6 +1,7 @@
 import React from "react";
-
+import { useAppContext } from "../context/AppContext";
 const Contact = () => {
+  const { homeData } = useAppContext();
   return (
     <div className="contact__container container grid">
       <div className="contact__content">
@@ -8,7 +9,9 @@ const Contact = () => {
           <div className="contact__card">
             <i className="uil uil-envelope-edit contact__card-icon"> </i>
             <h3 className="contact__card-title">Email</h3>
-            <span className="contact__card-data"> mark2kk@gmail.com </span>
+            <span className="contact__card-data">
+              {homeData && homeData.email}
+            </span>
             <span className="contact__button">
               Write me
               <i className="uil uil-arrow-right contact__button-icon"></i>
@@ -18,7 +21,9 @@ const Contact = () => {
           <div className="contact__card">
             <i className="uil uil-whatsapp contact__card-icon"> </i>
             <h3 className="contact__card-title">Whatsapp</h3>
-            <span className="contact__card-data"> +234 816 156 9539 </span>
+            <span className="contact__card-data">
+              {homeData && homeData.whatsapp}
+            </span>
             <span className="contact__button">
               Write me
               <i className="uil uil-arrow-right contact__button-icon"></i>
@@ -28,7 +33,9 @@ const Contact = () => {
           <div className="contact__card">
             <i className="uil uil-facebook-messenger contact__card-icon"> </i>
             <h3 className="contact__card-title">Facebook</h3>
-            <span className="contact__card-data"> fa.user123 </span>
+            <span className="contact__card-data">
+              {homeData && homeData.messanger}
+            </span>
             <span className="contact__button">
               Write me
               <i className="uil uil-arrow-right contact__button-icon"></i>

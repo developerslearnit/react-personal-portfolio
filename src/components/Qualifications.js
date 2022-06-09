@@ -1,20 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { client, urlFor } from "../lib/sanityClient";
+import { useAppContext } from "../context/AppContext";
 import * as Unicons from "@iconscout/react-unicons";
 
 const Qualifications = () => {
-  const [experienceData, setExperienceData] = useState([]);
-  const [educationData, setEducationData] = useState([]);
-
-  useEffect(() => {
-    const loadAboutData = async () => {
-      const experience = await client.fetch(`*[_type == "workExperience"]`);
-      const education = await client.fetch(`*[_type == "education"]`);
-      setExperienceData(experience);
-      setEducationData(education);
-    };
-    loadAboutData();
-  }, []);
+  const { experienceData, educationData } = useAppContext();
 
   return (
     <div className="qualification__container container grid">

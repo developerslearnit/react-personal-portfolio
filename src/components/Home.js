@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { client } from "../lib/sanityClient";
+import { client, urlFor } from "../lib/sanityClient";
 import * as Unicons from "@iconscout/react-unicons";
 
-const Home = () => {
-  const [homeData, setHomeData] = useState(null);
+import { useAppContext } from "../context/AppContext";
 
-  useEffect(() => {
-    const loadHomeData = async () => {
-      const home = await client.fetch(`*[_type == "home"]`);
-      setHomeData(home[0]);
-    };
-    loadHomeData();
-  }, []);
+const Home = () => {
+  const { homeData } = useAppContext();
+  const { follow } = useAppContext();
+
+  // useEffect(() => {
+  //   const loadHomeData = async () => {
+  //     const home = await client.fetch(`*[_type == "home"]`);
+  //     const followData = await client.fetch(`*[_type == "followMe"]`);
+  //     setHomeData(home[0]);
+  //     setFollow(followData[0]);
+  //   };
+  //   loadHomeData();
+  // }, []);
 
   return (
     <div className="home__container container grid">
@@ -19,28 +24,41 @@ const Home = () => {
         <span className="home__social-follow">Follow Me</span>
         <div className="home__social-links">
           <a
-            href="https://facebook.com"
+            href={follow.facebook}
             target="_blank"
             className="home__social-link"
           >
             <Unicons.UilFacebookF size={18} />
           </a>
-          <a
-            href="htpps://instagram.com"
-            target="_blank"
-            className="home__social-link"
-          >
-            <Unicons.UilInstagram size={18} />
+          <a href={follow.github} target="_blank" className="home__social-link">
+            <Unicons.UilGithub size={18} />
           </a>
           <a
-            href="https://twitter.com/"
+            href={follow.twitter}
             target="_blank"
             className="home__social-link"
           >
             <Unicons.UilTwitter size={18} />
           </a>
+          <a
+            href={follow.linkedin}
+            target="_blank"
+            className="home__social-link"
+          >
+            <Unicons.UilLinkedin size={18} />
+          </a>
+
+          <a href={follow.blog} target="_blank" className="home__social-link">
+            <Unicons.UilGlobe size={18} />
+          </a>
         </div>
       </div>
+
+      <img
+        src={homeData?.homeImage && urlFor(homeData.homeImage)}
+        alt="home-img"
+        className="home__img"
+      />
 
       <div className="home__data">
         <h1 className="home__title">{homeData && homeData.greetingLine}</h1>

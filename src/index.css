@@ -620,7 +620,7 @@ input {
 /*===== Work Section =====*/
 
 .work__container {
-  grid-template-columns: repeat(3, 330px);
+  grid-template-columns: repeat(3, 370px);
   gap: 1.8rem;
   justify-content: center;
   padding-top: 1rem;
@@ -703,7 +703,7 @@ input {
   align-items: center;
   padding: 0 1rem;
   z-index: var(--z-modal);
-
+  animation: fadeIn 1s, slideIn 0.8s linear;
   transition: 0.6s;
 }
 
@@ -742,6 +742,34 @@ input {
   margin-bottom: var(--mb-0-25);
 }
 
+@keyframes slideIn {
+  0% {
+    transform: translateY(400px);
+    animation-timing-function: ease-out;
+  }
+  60% {
+    transform: translateY(-30px);
+    animation-timing-function: ease-in;
+  }
+  80% {
+    transform: translateY(10px);
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: translateY(0px);
+    animation-timing-function: ease-in;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .details__title {
   font-size: var(--h3-font-size);
   font-weight: var(--font-medium);
@@ -768,8 +796,7 @@ input {
 }
 
 .details__info li a {
-  text-transform: lowercase;
-  color: var(--skin-color);
+  color: var(--title-color);
 }
 
 /*===== Services Section =====*/
@@ -1050,7 +1077,7 @@ textarea.input {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--scroll-thumb-color);
+  background-color: var(--skin-color);
   border-radius: 0.5rem;
 }
 

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { client, urlFor } from "../lib/sanityClient";
+import React, { useState } from "react";
+import { urlFor } from "../lib/sanityClient";
 import * as Unicons from "@iconscout/react-unicons";
+import { useAppContext } from "../context/AppContext";
 import Modal from "./Modal";
 
 const Portfolio = () => {
-  const [portfolioData, setPortfolioData] = useState([]);
+  const { portfolioData } = useAppContext();
   const [showModal, setShowModal] = useState(false);
-
   const [single, setSingle] = useState({});
 
   const handleClose = () => {
@@ -17,17 +17,6 @@ const Portfolio = () => {
     setSingle(item);
     setShowModal(true);
   };
-
-  useEffect(() => {
-    const loadPortfolioData = async () => {
-      const portfolio = await client.fetch(`*[_type == "portfolio"]`);
-      console.log("portfolio", portfolio);
-      setPortfolioData(portfolio);
-    };
-
-    loadPortfolioData();
-    return () => {};
-  }, []);
 
   return (
     <>
